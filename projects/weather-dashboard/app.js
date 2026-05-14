@@ -140,22 +140,29 @@ function handleSearch() {
   searchInput.value = '';
 }
 
+let geoInProgress = false;
+
 function handleGeolocation({ auto = false } = {}) {
   if (!navigator.geolocation) {
     if (!auto) showError('Geolocation Error', 'Your browser does not support geolocation.');
     return;
   }
 
+  if (geoInProgress) return;
+  geoInProgress = true;
+
   geoBtn.style.opacity = '0.6';
   geoBtn.style.pointerEvents = 'none';
 
   navigator.geolocation.getCurrentPosition(
     (pos) => {
+      geoInProgress = false;
       geoBtn.style.opacity = '1';
       geoBtn.style.pointerEvents = 'auto';
       fetchWeatherByCoords(pos.coords.latitude, pos.coords.longitude);
     },
     (err) => {
+      geoInProgress = false;
       geoBtn.style.opacity = '1';
       geoBtn.style.pointerEvents = 'auto';
       const msgs = {

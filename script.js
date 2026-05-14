@@ -26,7 +26,17 @@ async function loadHeroWeather() {
     const { latitude: lat, longitude: lon } = pos.coords;
     await fetchAndRenderWeather(`/api/weather?endpoint=weather&lat=${lat}&lon=${lon}&units=metric`);
   } catch {
-    if (widget) widget.style.display = 'none';
+    try {
+      const ip = await fetch('https://ipapi.co/json/');
+      const loc = await ip.json();
+      if (loc.latitude && loc.longitude) {
+        await fetchAndRenderWeather(`/api/weather?endpoint=weather&lat=${loc.latitude}&lon=${loc.longitude}&units=metric`);
+      } else {
+        if (widget) widget.style.display = 'none';
+      }
+    } catch {
+      if (widget) widget.style.display = 'none';
+    }
   }
 }
 

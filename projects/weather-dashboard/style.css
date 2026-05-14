@@ -187,6 +187,14 @@ img{display:block;max-width:100%}
 }
 .search-input::placeholder{color:var(--text-muted)}
 
+.search-city-label{
+  font-size:.9rem;font-weight:500;
+  color:var(--text);white-space:nowrap;
+  padding-right:.5rem;
+  display:none;
+}
+.search-city-label:not(:empty){ display:block; }
+
 .search-btn{
   width:50px;height:50px;
   background:var(--accent);
@@ -361,9 +369,6 @@ img{display:block;max-width:100%}
 .cw-details{
   display:flex;flex-direction:column;align-items:center;gap:0.2rem;
   margin-top:1rem;
-}
-.cw-location{
-  font-size:1.3rem;font-weight:400;
 }
 .cw-location svg{display:none}
 .cw-datetime{font-size:1rem;color:var(--text);font-weight:500}

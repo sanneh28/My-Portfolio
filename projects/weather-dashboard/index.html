@@ -36,6 +36,7 @@
         <div class="search-input-wrapper">
           <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           <input type="text" id="search-input" class="search-input" placeholder="Search City" autocomplete="off"/>
+          <span class="search-city-label" id="cw-city"></span>
         </div>
         <button class="geo-btn" id="geo-btn" aria-label="Use my location">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="9"/></svg>
@@ -81,7 +82,6 @@
       <!-- Current Weather -->
       <section class="current-weather" id="current-weather">
         <div class="cw-details">
-          <div class="cw-location" id="cw-city">--</div>
           <div class="cw-temp-row">
             <span class="cw-temp" id="cw-temp">--</span>
             <span class="cw-deg" id="cw-unit">°</span>

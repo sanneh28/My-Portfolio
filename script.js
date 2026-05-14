@@ -4,19 +4,30 @@ const weatherIcons = {
   '11d':'⛈️','11n':'⛈️','13d':'❄️','13n':'❄️','50d':'🌫️','50n':'🌫️',
 };
 
+async function fetchAndRenderWeather(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('bad response');
+  const data = await res.json();
+  const icon = weatherIcons[data.weather?.[0]?.icon] || '🌡️';
+  const temp = Math.round(data.main?.temp);
+  document.getElementById('weather-icon').textContent = icon;
+  document.getElementById('weather-temp').textContent = `${temp}°C`;
+  document.getElementById('weather-city').textContent = data.name || '';
+  const widget = document.getElementById('weather-widget');
+  if (widget) widget.style.display = '';
+}
+
 async function loadHeroWeather() {
+  const widget = document.getElementById('weather-widget');
   try {
-    const res = await fetch('/api/weather?endpoint=weather&q=Stuttgart&units=metric');
-    if (!res.ok) return;
-    const data = await res.json();
-    const icon = weatherIcons[data.weather?.[0]?.icon] || '🌡️';
-    const temp = Math.round(data.main?.temp);
-    document.getElementById('weather-icon').textContent = icon;
-    document.getElementById('weather-temp').textContent = `${temp}°C`;
+    await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
+    }).then(async (pos) => {
+      const { latitude: lat, longitude: lon } = pos.coords;
+      await fetchAndRenderWeather(`/api/weather?endpoint=weather&lat=${lat}&lon=${lon}&units=metric`);
+    });
   } catch {
-    // silently hide widget if API isn't available
-    const w = document.getElementById('weather-widget');
-    if (w) w.style.display = 'none';
+    if (widget) widget.style.display = 'none';
   }
 }
 

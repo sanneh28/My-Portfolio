@@ -577,7 +577,8 @@ img{display:block;max-width:100%}
   .search-container{ overflow:hidden; }
   .search-input-wrapper{ min-width:0; }
   .search-input{ min-width:0;width:0;flex:1; }
-  .search-city-label{ flex-shrink:0;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.8rem; }
+  .search-city-label{ flex-shrink:0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.8rem; }
+  .search-input-wrapper:focus-within .search-city-label{ display:none !important; }
   .search-city-label:not(:empty){ display:block; }
 
   #app-header{

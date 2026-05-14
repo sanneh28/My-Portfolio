@@ -655,12 +655,25 @@ function convertSpeed(ms) {
   return currentUnit === 'metric' ? (ms * 3.6) : (ms * 2.237);
 }
 
-// OWM incorrectly tags some Gambian towns as SN (Senegal). Correct by bounding box.
+// OWM incorrectly tags many Gambian towns as SN (Senegal) — wrong country code and
+// sometimes wrong coordinates too. Two-layer correction: bounding box for coord-based
+// lookups, then a name list for towns OWM places outside the box.
+const GAMBIAN_TOWNS = new Set([
+  'banjul','serekunda','kanifing','brikama','bakau','farafenni',
+  'basse','basse santa su','bansang','janjanbureh','georgetown',
+  'kerewan','mansa konko','mansakonko','soma','bwiam','gunjur',
+  'kartung','fatoto','kaur','kuntaur','wassu','karantaba','sabi',
+  'sukuta','kololi','fajara','kotu','yundum','brufut','tanji',
+  'barra','essau','lamin','brikama ba','gambissara','suduwol',
+  'kuntair','sinchu','diabugu','koina','basse',
+]);
+
 function correctCountryCode(weather) {
   const country = weather.sys?.country;
   if (country !== 'SN') return country;
   const { lat, lon } = weather.coord || {};
   if (lat >= 13.065 && lat <= 13.831 && lon >= -16.813 && lon <= -13.797) return 'GM';
+  if (GAMBIAN_TOWNS.has((weather.name || '').toLowerCase())) return 'GM';
   return country;
 }
 

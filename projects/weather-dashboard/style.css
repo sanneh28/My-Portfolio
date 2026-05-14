@@ -351,24 +351,24 @@ img{display:block;max-width:100%}
   to{opacity:1;transform:translateY(0)}
 }
 
-.cw-temp-row{display:flex;align-items:flex-start;line-height:1;margin-bottom:0.5rem}
+.cw-temp-row{display:flex;align-items:flex-start;line-height:1;margin-bottom:0.25rem}
 .cw-temp{
-  font-size:5rem;font-weight:200; /* Reduced from 7rem */
-  letter-spacing:-4px;
+  font-size:2.8rem;font-weight:200;
+  letter-spacing:-2px;
 }
 .cw-deg{
-  font-size:2.5rem;font-weight:300;color:var(--text);
-  margin-top:1rem;
+  font-size:1.3rem;font-weight:300;color:var(--text);
+  margin-top:0.4rem;
 }
 .cw-condition{
-  font-size:1.5rem;font-weight:500;
+  font-size:0.95rem;font-weight:500;
   text-transform:capitalize;
 }
-.cw-feels{font-size:1.1rem;color:var(--text);margin-top:0.4rem;font-weight:500}
+.cw-feels{font-size:0.82rem;color:var(--text);margin-top:0.2rem;font-weight:500}
 
 .cw-details{
-  display:flex;flex-direction:column;align-items:center;gap:0.2rem;
-  margin-top:1rem;
+  display:flex;flex-direction:column;align-items:center;gap:0.15rem;
+  margin-top:0.25rem;
 }
 .cw-location svg{display:none}
 .cw-datetime{font-size:1rem;color:var(--text);font-weight:500}

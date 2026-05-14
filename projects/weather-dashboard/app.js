@@ -154,15 +154,21 @@ function handleGeolocation({ auto = false } = {}) {
       geoBtn.style.pointerEvents = 'auto';
       fetchWeatherByCoords(pos.coords.latitude, pos.coords.longitude);
     },
-    () => {
+    (err) => {
       geoBtn.style.opacity = '1';
       geoBtn.style.pointerEvents = 'auto';
+      const msgs = {
+        1: 'Location permission denied. Please allow it in Safari → Settings → Websites → Location.',
+        2: 'Your location could not be determined. Try searching for your city instead.',
+        3: 'Location request timed out. Try searching for your city instead.',
+      };
       if (auto) {
         showView('welcome');
       } else {
-        showError('Location Denied', 'Please allow location access or search for a city manually.');
+        showError('Location Error', msgs[err.code] || 'Could not get your location. Please search manually.');
       }
-    }
+    },
+    { timeout: 10000, enableHighAccuracy: false }
   );
 }
 

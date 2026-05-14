@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadRecentSearches();
   setupEventListeners();
   spawnWelcomeParticles();
+  handleGeolocation({ auto: true });
 });
 
 function spawnWelcomeParticles() {

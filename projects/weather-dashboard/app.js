@@ -79,8 +79,27 @@ const weatherGradients = {
 document.addEventListener('DOMContentLoaded', () => {
   loadRecentSearches();
   setupEventListeners();
+  spawnWelcomeParticles();
   handleGeolocation({ auto: true });
 });
+
+function spawnWelcomeParticles() {
+  const count = window.innerWidth < 600 ? 12 : 22;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 2;
+    p.style.cssText = `
+      width:${size}px;height:${size}px;
+      background:rgba(255,255,255,${Math.random() * 0.15 + 0.05});
+      left:${Math.random() * 100}%;
+      animation-duration:${Math.random() * 14 + 10}s;
+      animation-delay:${Math.random() * 8}s;
+      filter:blur(1px);
+    `;
+    particlesContainer.appendChild(p);
+  }
+}
 
 function setupEventListeners() {
   searchBtn.addEventListener('click', handleSearch);

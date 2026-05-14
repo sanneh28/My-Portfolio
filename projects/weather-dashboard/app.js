@@ -287,7 +287,8 @@ function renderWeather(weather, forecast, aqi) {
   if ($('#cw-high')) $('#cw-high').textContent = Math.round(convertTemp(highVal));
   if ($('#cw-low')) $('#cw-low').textContent = Math.round(convertTemp(lowVal));
 
-  if ($('#cw-city')) $('#cw-city').textContent = `${weather.sys?.country ? weather.sys.country + ' · ' : ''}${weather.name}`;
+  const country = correctCountryCode(weather);
+  if ($('#cw-city')) $('#cw-city').textContent = `${country ? country + ' · ' : ''}${weather.name}`;
 
   // Highlights
   renderHighlights(weather, windSpeed, speedUnit, aqi);
@@ -652,6 +653,15 @@ function convertTemp(c) {
 function convertSpeed(ms) {
   // input is always m/s from API
   return currentUnit === 'metric' ? (ms * 3.6) : (ms * 2.237);
+}
+
+// OWM incorrectly tags some Gambian towns as SN (Senegal). Correct by bounding box.
+function correctCountryCode(weather) {
+  const country = weather.sys?.country;
+  if (country !== 'SN') return country;
+  const { lat, lon } = weather.coord || {};
+  if (lat >= 13.065 && lat <= 13.831 && lon >= -16.813 && lon <= -13.797) return 'GM';
+  return country;
 }
 
 function mostFrequent(arr) {

@@ -20,12 +20,11 @@ async function fetchAndRenderWeather(url) {
 async function loadHeroWeather() {
   const widget = document.getElementById('weather-widget');
   try {
-    await new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
-    }).then(async (pos) => {
-      const { latitude: lat, longitude: lon } = pos.coords;
-      await fetchAndRenderWeather(`/api/weather?endpoint=weather&lat=${lat}&lon=${lon}&units=metric`);
-    });
+    const pos = await new Promise((resolve, reject) =>
+      navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 })
+    );
+    const { latitude: lat, longitude: lon } = pos.coords;
+    await fetchAndRenderWeather(`/api/weather?endpoint=weather&lat=${lat}&lon=${lon}&units=metric`);
   } catch {
     if (widget) widget.style.display = 'none';
   }

@@ -560,18 +560,52 @@ img{display:block;max-width:100%}
   .daily-forecast-wrapper{
     grid-column:span 4;
   }
+  .intelligence-card{
+    grid-column:span 4;
+  }
 }
 
 @media(max-width:600px){
+  .app-wrapper{
+    padding:0.75rem 0.85rem 2rem;
+    gap:0.65rem;
+  }
+
+  #app-header{
+    padding:0.5rem 0;
+    gap:0.5rem;
+  }
+
+  .logo-text{ font-size:1rem; }
+
+  .geo-btn .geo-label{ display:none; }
+  .geo-btn{ padding:0 0.9rem; }
+
+  .search-container{ gap:0.5rem; }
+  .search-btn{ width:44px;height:44px; }
+  .search-input{ font-size:0.95rem;padding:0.85rem 0.5rem; }
+
   .highlights-grid{
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:minmax(110px,auto);
+    gap:0.5rem;
   }
-  .daily-forecast-wrapper{
-    grid-column:span 2;
-  }
-  .highlight-card{
-    grid-column:span 2;
-  }
-  .cw-temp{font-size:5rem}
-  .cw-location{font-size:1.8rem}
+
+  .hourly-forecast-wrapper{ grid-column:span 2; }
+  .daily-forecast-wrapper { grid-column:span 2; }
+  .intelligence-card      { grid-column:span 2; }
+  #hl-solar               { grid-column:span 2; }
+  .highlight-card         { grid-column:span 1; }
+
+  .cw-temp{ font-size:4rem; }
+  .cw-location{ font-size:1.4rem; }
+  .cw-condition{ font-size:0.85rem; }
+
+  .hl-big{ font-size:1.6rem; }
+  .hl-header{ font-size:0.72rem; }
+
+  .welcome-state{ padding:4rem 1rem; }
+  .welcome-title{ font-size:1.75rem; }
+
+  .error-card{ padding:2.5rem 1.5rem; }
 }

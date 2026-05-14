@@ -55,7 +55,7 @@ function initSliders() {
     }
 
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-    setInterval(() => goTo(current + 1), 3000);
+    setInterval(() => goTo(current + 1), 15000);
   });
 }
 

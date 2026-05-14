@@ -510,10 +510,18 @@
       gap: 1.5rem;
     }
     .contact-links-small a {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
       color: var(--muted);
       font-size: 0.9rem;
       font-weight: 500;
       transition: color 0.2s;
+    }
+    .contact-links-small a svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
     }
     .contact-links-small a:hover {
       color: var(--accent);

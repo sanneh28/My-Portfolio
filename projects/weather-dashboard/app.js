@@ -244,7 +244,7 @@ async function fetchWeatherByCoords(lat, lon) {
     currentAqiData = aqiData;
 
     saveRecentSearch(weatherData.name);
-    searchInput.value = weatherData.name;
+    searchInput.value = '';
 
     renderWeather(weatherData, forecastData, aqiData);
     updateParticles(weatherData);

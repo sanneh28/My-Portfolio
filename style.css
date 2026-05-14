@@ -8,8 +8,8 @@
       --accent:    #c8f060;
       --text:      #f0ede6;
       --muted:     #888;
-      --font-head: 'Playfair Display', serif;
-      --font-body: 'DM Sans', sans-serif;
+      --font-head: 'Fraunces', serif;
+      --font-body: 'Inter', sans-serif;
     }
 
     [data-theme="light"] {
@@ -38,7 +38,7 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: var(--font-body);
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.7;
     }
 
@@ -184,7 +184,7 @@
     }
 
     .hero-bio {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--muted);
       max-width: 520px;
       margin-bottom: 2.5rem;

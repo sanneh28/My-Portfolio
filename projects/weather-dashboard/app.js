@@ -37,6 +37,7 @@ const errorRetryBtn = $('#error-retry-btn');
 const recentSearches = $('#recent-searches');
 const recentList = $('#recent-list');
 const clearRecentBtn = $('#clear-recent-btn');
+const welcomeGeoBtn = $('#welcome-geo-btn');
 const particlesContainer = $('#particles-container');
 
 // =============================================
@@ -80,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
   loadRecentSearches();
   setupEventListeners();
   spawnWelcomeParticles();
-  handleGeolocation({ auto: true });
 });
 
 function spawnWelcomeParticles() {
@@ -107,6 +107,7 @@ function setupEventListeners() {
     if (e.key === 'Enter') handleSearch();
   });
   geoBtn.addEventListener('click', handleGeolocation);
+  welcomeGeoBtn.addEventListener('click', handleGeolocation);
   errorRetryBtn.addEventListener('click', () => {
     showView('welcome');
     searchInput.focus();

@@ -280,7 +280,7 @@ function renderWeather(weather, forecast, aqi) {
   if ($('#cw-high')) $('#cw-high').textContent = Math.round(convertTemp(highVal));
   if ($('#cw-low')) $('#cw-low').textContent = Math.round(convertTemp(lowVal));
 
-  if ($('#cw-city')) $('#cw-city').textContent = `${weather.name}${weather.sys?.country ? ' ' + weather.sys.country : ''}`;
+  if ($('#cw-city')) $('#cw-city').textContent = `${weather.sys?.country ? weather.sys.country + ' · ' : ''}${weather.name}`;
 
   // Highlights
   renderHighlights(weather, windSpeed, speedUnit, aqi);

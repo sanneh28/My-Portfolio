@@ -323,7 +323,7 @@ img{display:block;max-width:100%}
   flex-direction:column;
   align-items:center;
   text-align:center;
-  padding:2rem 2rem; /* Reduced from 4rem */
+  padding:0.75rem 1.5rem;
   background:transparent;
   border:none;
   border-radius:0;
@@ -363,7 +363,7 @@ img{display:block;max-width:100%}
   margin-top:1rem;
 }
 .cw-location{
-  font-size:2.2rem;font-weight:400;
+  font-size:1.3rem;font-weight:400;
 }
 .cw-location svg{display:none}
 .cw-datetime{font-size:1rem;color:var(--text);font-weight:500}

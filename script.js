@@ -14,7 +14,7 @@ async function fetchAndRenderWeather(url) {
   document.getElementById('weather-temp').textContent = `${temp}°C`;
   document.getElementById('weather-city').textContent = data.name || '';
   const widget = document.getElementById('weather-widget');
-  if (widget) widget.style.display = '';
+  if (widget) widget.style.display = 'inline-flex';
 }
 
 async function loadHeroWeather() {

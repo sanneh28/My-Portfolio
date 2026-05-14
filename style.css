@@ -381,6 +381,42 @@
       border-bottom: 1px solid var(--border);
     }
 
+    .project-slider {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-slider .slide {
+      display: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-slider .slide.active {
+      display: block;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+    }
+
+    .slider-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .slider-dot.active {
+      background: var(--accent);
+    }
+
     .project-body {
       padding: 1.5rem;
     }

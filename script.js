@@ -40,8 +40,28 @@ async function loadHeroWeather() {
   }
 }
 
+function initSliders() {
+  document.querySelectorAll('.project-slider').forEach(slider => {
+    const slides = slider.querySelectorAll('.slide');
+    const dots = slider.querySelectorAll('.slider-dot');
+    let current = 0;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = index % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+    setInterval(() => goTo(current + 1), 3000);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   loadHeroWeather();
+  initSliders();
   // 0. Theme Toggle
   const themeToggleBtn = document.getElementById('theme-toggle');
 

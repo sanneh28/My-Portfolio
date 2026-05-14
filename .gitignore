@@ -1,0 +1,9 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Other common folders
+node_modules/
+.env
+.env.local
+.env*.local

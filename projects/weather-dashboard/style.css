@@ -23,7 +23,7 @@
    RESET & BASE
 ============================================= */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+html{scroll-behavior:smooth}
 body{
   font-family:var(--font-sans);
   color:var(--text);
@@ -543,6 +543,7 @@ img{display:block;max-width:100%}
 .d-day{font-weight:600;font-size:1rem}
 .d-icon{font-size:1.6rem}
 .d-cond{display:none}
+@media(min-width:601px){.d-cond{display:block;font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;}}
 .d-temps{
   display:flex;gap:1rem;justify-content:flex-end;
   font-weight:600;font-size:1rem;
@@ -579,7 +580,7 @@ img{display:block;max-width:100%}
   .search-input{ min-width:0;width:0;flex:1; }
   .search-city-label{ flex-shrink:0;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.8rem; }
   .search-city-label:not(:empty){ display:block; }
-  .search-input-wrapper:focus-within .search-city-label{ display:none !important; }
+  .search-input-wrapper:focus-within .search-city-label:not(:empty){ display:none; }
 
   #app-header{
     padding:0.5rem 0;

@@ -600,9 +600,9 @@ img{display:block;max-width:100%}
 
   .hourly-forecast-wrapper{ grid-column:span 2; }
   .daily-forecast-wrapper { grid-column:span 2; }
+  .highlight-card         { grid-column:span 1; }
   .intelligence-card      { grid-column:span 2; }
   #hl-solar               { grid-column:span 2; }
-  .highlight-card         { grid-column:span 1; }
 
   .cw-temp{ font-size:4rem; }
   .cw-location{ font-size:1.4rem; }

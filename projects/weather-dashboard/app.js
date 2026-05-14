@@ -555,9 +555,10 @@ function showView(view) {
   loadingOverlay.style.display = 'none';
   errorState.style.display = 'none';
   weatherContent.style.display = 'none';
+  recentSearches.style.display = view === 'weather' ? 'none' : '';
 
   switch (view) {
-    case 'welcome': welcomeState.style.display = 'flex'; break;
+    case 'welcome': welcomeState.style.display = 'flex'; loadRecentSearches(); break;
     case 'loading': loadingOverlay.style.display = 'flex'; break;
     case 'error': errorState.style.display = 'flex'; break;
     case 'weather': weatherContent.style.display = 'block'; break;

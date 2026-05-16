@@ -392,9 +392,11 @@ function renderHighlights(weather, windSpeed, speedUnit, aqi) {
   if (hlWindDirTxt) hlWindDirTxt.textContent = degToCompass(windDeg);
 
   // Visibility
-  const visKm = (weather.visibility / 1000).toFixed(1);
+  const visRaw = weather.visibility / 1000;
+  const visVal = currentUnit === 'imperial' ? (visRaw * 0.621371).toFixed(1) : visRaw.toFixed(1);
+  const visUnit = currentUnit === 'imperial' ? 'mi' : 'km';
   const hlVisVal = $('#hl-vis-val');
-  if (hlVisVal) hlVisVal.innerHTML = `${visKm} <small>km</small>`;
+  if (hlVisVal) hlVisVal.innerHTML = `${visVal} <small>${visUnit}</small>`;
 
   // Pressure
   const hlPressVal = $('#hl-pressure-val');
@@ -601,7 +603,7 @@ function loadRecentSearches() {
     chip.textContent = city;
     chip.addEventListener('click', () => {
       searchInput.value = city;
-      fetchWeatherByCity(city);
+      handleSearch();
     });
     recentList.appendChild(chip);
   });

@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
+        if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
           current = section.getAttribute('id');
         }
       });

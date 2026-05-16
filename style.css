@@ -337,8 +337,14 @@
     }
 
     .skill-icon {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    /* GitHub and Vercel logos are black — invert in dark mode */
+    html:not([data-theme="light"]) .skill-icon-mono {
+      filter: invert(1);
     }
 
     .skill-name {

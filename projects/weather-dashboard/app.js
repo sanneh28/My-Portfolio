@@ -138,6 +138,7 @@ function handleSearch() {
   if (!city) return;
   fetchWeatherByCity(city);
   searchInput.value = '';
+  searchInput.blur();
 }
 
 let geoInProgress = false;

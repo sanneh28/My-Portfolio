@@ -344,7 +344,7 @@
       border: 1px solid var(--border);
     }
 
-    .about-text p {
+    .about-text p:not(.section-label) {
       color: var(--muted);
       margin-bottom: 1.2rem;
     }

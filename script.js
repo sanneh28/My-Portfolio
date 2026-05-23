@@ -1,7 +1,8 @@
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
-window.addEventListener('load', () => { window.scrollTo(0, 0); setTimeout(() => window.scrollTo(0, 0), 0); });
+window.addEventListener('load', () => window.scrollTo(0, 0));
 window.addEventListener('pageshow', () => window.scrollTo(0, 0));
+window.addEventListener('beforeunload', () => window.scrollTo(0, 0));
 
 const weatherIcons = {
   '01d':'☀️','01n':'🌙','02d':'⛅','02n':'☁️','03d':'☁️','03n':'☁️',

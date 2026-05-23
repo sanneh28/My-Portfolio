@@ -101,13 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.classList.toggle('active');
   });
 
-  // Close mobile menu when a link is clicked
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
+  // Handle all hash links — scroll with JS, never add hash to URL
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
       mobileMenuBtn.classList.remove('active');
       navLinks.classList.remove('active');
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      history.replaceState(null, '', location.pathname);
     });
   });
+
+  // Clear hash if page somehow loaded with one
+  if (location.hash) history.replaceState(null, '', location.pathname);
 
   // 2. Dynamic Footer Year
   const yearSpan = document.getElementById('current-year');

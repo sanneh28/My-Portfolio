@@ -437,11 +437,6 @@
       transform: scale(1.1);
     }
 
-    /* Mono icons (GitHub, Express, Vercel) — invert in dark mode */
-    html:not([data-theme="light"]) .skill-icon-mono {
-      filter: invert(1);
-    }
-
     .skill-info {
       display: flex;
       flex-direction: column;

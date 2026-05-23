@@ -10,3 +10,8 @@ node_modules/
 
 # Claude context
 CLAUDE.md
+
+# Impeccable design system context (AI tooling)
+PRODUCT.md
+DESIGN.md
+.impeccable/

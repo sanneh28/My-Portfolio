@@ -65,13 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // 0. Theme Toggle
   const themeToggleBtn = document.getElementById('theme-toggle');
 
+  const sunIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`;
+  const moonIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+
   const applyTheme = (theme) => {
     if (theme === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
-      themeToggleBtn.textContent = '🌙';
+      themeToggleBtn.innerHTML = moonIcon;
     } else {
       document.documentElement.removeAttribute('data-theme');
-      themeToggleBtn.textContent = '☀️';
+      themeToggleBtn.innerHTML = sunIcon;
     }
   };
 
@@ -107,11 +110,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 3. Scroll Animations using Intersection Observer
-  // Add animation class to elements dynamically to keep HTML clean
   const animatedElements = document.querySelectorAll(
     '.about-grid, .skill-card, .project-card, .section-title, .section-desc'
   );
-  
+
+  // Stagger cards within their parent grid
+  document.querySelectorAll('.skill-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 50}ms`;
+  });
+  document.querySelectorAll('.project-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 80}ms`;
+  });
+
   animatedElements.forEach(el => el.classList.add('fade-in-section'));
 
   const observerOptions = {
@@ -133,15 +143,19 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(section);
   });
 
-  // 4. Active Navigation State on Scroll
+  // 4. Active Navigation State on Scroll + Nav scrolled shadow
   const sections = document.querySelectorAll('section');
   const navItems = document.querySelectorAll('.nav-links a');
+  const navEl = document.querySelector('nav');
 
   let scrollTicking = false;
   window.addEventListener('scroll', () => {
     if (scrollTicking) return;
     scrollTicking = true;
     requestAnimationFrame(() => {
+      // Nav shadow when scrolled
+      navEl.classList.toggle('nav-scrolled', window.scrollY > 10);
+
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
